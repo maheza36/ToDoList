@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Todolist</title>
+    <title>TODOLIST</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>Bss Bss !</title>
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <a class="navbar-brand" href="<%= root_path %>">ToDoList <%= current_user ? "| #{current_user.email}" : '' %></a>
+        <ul class="nav navbar-nav navbar-right">
+            <% if !current_user %>
+              <li><a href="<%= new_user_session_path %>">Log in</a></li>
+              <li><a href="<%= new_user_registration_path %>">Sign up</a></li>
+            <% else %>
+              <li><a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a></li>
+            <% end %>
+        </ul>
+       </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

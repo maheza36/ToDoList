@@ -1,10 +1,18 @@
 source 'https://rubygems.org'
 
+# Devise for sign stuff...
+gem 'devise'
+
+# Pry for debugging code. Use anywhere in your code binding.pry and see the magic
+gem 'pry'
+
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.3.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use mysql as the database for Active Record
+gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
