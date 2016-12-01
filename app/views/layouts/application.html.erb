@@ -12,7 +12,7 @@
   <body>
     <nav class="navbar navbar-default">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <a class="navbar-brand" href="<%= root_path %>">ToDoList <%= current_user ? "| #{current_user.email}" : '' %></a>
+        <a class="navbar-brand" href="<%= root_path %>">ToDoList </a>
         <ul class="nav navbar-nav navbar-right">
             <% if !current_user %>
               <li><a href="<%= new_user_session_path %>">Log in</a></li>

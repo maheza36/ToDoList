@@ -1,0 +1,4 @@
+if(document.querySelector("div[data-modal='<%= @modal[:modal_id] %>']") === null){
+  $('#notebook-actions').append('<%= j render "shared/modal", @modal %>');
+}
+$("div[data-modal='<%= @modal[:modal_id] %>']").modal('show');
