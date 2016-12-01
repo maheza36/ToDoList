@@ -1,9 +1,22 @@
 <% form_name ||= "Manage" %>
 <h1 class="text-center">  <%= form_name %> Notebook </h1>
-
-
-
+<!--<div id="notebook-errors-messages" style="display:none;"></div>-->
 <%= form_for @notebook , method: (form_name.downcase == 'edit' ? 'put' : 'post') do |fc| %>
+
+    <% if @notebook.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@notebook.errors.count, "error") %> prohibited
+          this article from being saved:
+        </h2>
+        <ul>
+          <% @notebook.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
   <div class="form-group">
     <%= fc.label :name %>
     <%= fc.text_field :name, class: "form-control" %>

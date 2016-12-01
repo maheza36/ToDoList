@@ -39,6 +39,19 @@ class NotebooksController < ApplicationController
     if @notebook.nil?
       flash[:error] = "Houston we are in troubles, please dont hack us."
       redirect_to notebooks_path
+    else
+      respond_to do |format|
+        format.html
+        format.js do
+          @modal = {
+            modal_id: "edit_notebook",
+            modal_title: "Edit Notebook modal",
+            modal_body: "form",
+            modal_body_params: {form_name: params[:action].capitalize},
+            modal_action: nil
+          }
+        end
+      end
     end
   end
 
@@ -60,7 +73,7 @@ class NotebooksController < ApplicationController
       flash[:success] = "created. Ok"
       redirect_to notebooks_path
     else
-      @notebook = Notebook.all
+      flash[:error] = "Houston we are in troubles, try it again."
       render 'new'
     end
   end
