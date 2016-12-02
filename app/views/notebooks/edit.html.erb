@@ -1,2 +1,6 @@
-<h1>Notebooks#edit</h1>
-<p>Find me in app/views/notebooks/edit.html.erb</p>
+<div class="container">
+  <%= render "form" , form_name: params[:action].capitalize %>
+</div>
+<section class="row text-center cities-controls">
+    <a href="<%= notebooks_path %>" class="btn btn-default"> Return my Notebook's </a>
+</section>

@@ -1,2 +1,18 @@
-<h1>Notebooks#index</h1>
-<p>Find me in app/views/notebooks/index.html.erb</p>
+<div class="container">
+  <h1 class="text-center"> Notebook </h1>
+  <section class="row text-center cities-controls" id="notebook-actions">
+      <a href="<%= new_notebook_path %>" class="btn btn-default" data-remote="true"> New Notebook </a>
+  </section>
+  <% @notebooks.each do |f| %>
+    <article class="row city">
+      <ul>
+        <li class="col-md-2">Name: <%= f.name %></li>
+        <% if current_user %>
+        <li class="col-md-1"><a href="<%= notebook_path(f.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+        <li class="col-md-1"><a href="<%= edit_notebook_path(f.id) %>" class="btn btn-primary" data-remote="true"> Edit </a></li>
+        <% end %>
+        <li class="col-md-1"><a href="<%= notebook_path(f.id) %>" class="btn btn-info" > Show </a></li>
+      </ul>
+    </article>
+  <% end if @notebooks.any? %>
+</div>
