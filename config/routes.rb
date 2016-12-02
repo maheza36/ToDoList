@@ -8,7 +8,15 @@ devise_for :users, controllers: {
   registrations: 'users/registrations'
 }
 
-resources :homeworks
+resources :homeworks do
+  member do
+    post :share
+    # ... genera una ruta dentro de homeworks pero con el :id como el show, edit o destroy
+  end
+  #collection do
+  # ... genera una ruta dentro de homeworks pero sin el :id como el new o el index o el create
+  #end
+end
 resources :notebooks
-
+resources :task_users
 end

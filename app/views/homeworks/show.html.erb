@@ -1,2 +1,14 @@
-<h1>Homeworks#show</h1>
-<p>Find me in app/views/homeworks/show.html.erb</p>
+<div class="container">
+  <article class="row homework">
+    <ul>
+      <li class="col-md-2"><strong><%= @homework.name %></strong></li>
+      <li class="col-md-2"><%= @homework.description %></li>
+      <li class="col-md-2"><%= @homework.date_create %></li>
+      <li class="col-md-2"><%= @homework.date_full %></li>
+      <li class="col-md-2"><%= @homework.priority %></li>
+      <li class="col-md-2"><%= @homework.taskfull %></li>
+      <li class="col-md-4"><a href="<%= homework_path(@homework.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+      <li class="col-md-4"><a href="<%= edit_homework_path(@homework.id) %>" class="btn btn-primary"> Edit </a></li>
+    </ul>
+  </article>
+</div>

@@ -1,2 +1,28 @@
-<h1>Homeworks#index</h1>
-<p>Find me in app/views/homeworks/index.html.erb</p>
+<div class="container">
+  <h1 class="text-center"> Homeworks </h1>
+  <section class="row text-center cities-controls">
+      <a href="<%= new_homework_path %>" class="btn btn-default"> New Homework </a>
+  </section>
+  <% @homeworks.each do |h| %>
+    <article class="row homework">
+      <ul>
+        <li class="col-md-3"><strong><%= h.name %></strong></li>
+        <li class="col-md-3"><%= h.description %></li>
+        <li class="col-md-3"><%= h.date_create %></li>
+        <li class="col-md-3"><%= h.date_full %></li>
+        <li class="col-md-3"><%= h.priority %></li>
+        <li class="col-md-3"><%= h.taskfull %></li>
+        <li>
+         <%= form_tag share_homework_path(h.id) do %>
+           <%= label_tag :user_emails%>
+           <%= text_field_tag :user_emails%>
+           <button type="submit" name="button"> Share </button>
+         <% end %>
+        </li>
+        <li class="col-md-1"><a href="<%= homework_path(h.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+        <li class="col-md-1"><a href="<%= edit_homework_path(h.id) %>" class="btn btn-primary"> Edit </a></li>
+        <li class="col-md-1"><a href="<%= homework_path(h.id) %>" class="btn btn-info"> Show </a></li>
+      </ul>
+    </article>
+  <% end if @homeworks.any? %>
+</div>

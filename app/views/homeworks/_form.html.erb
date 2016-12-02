@@ -1,0 +1,35 @@
+<% form_name ||= "Manage" %>
+<h1 class="text-center">  <%= form_name %> HOMEWORK </h1>
+<h2> New homework </h2>
+<%= form_for @homework , method: (form_name.downcase == 'edit' ? 'put' : 'post') do |f| %>
+  <div class="form-group">
+    <%= f.label :name%>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description%>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :date_create%>
+    <%= f.datetime_select :date_create, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :date_full%>
+    <%= f.datetime_select :date_full, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :priority%>
+    <select name="homework[priority]">
+        <option value="Alta">Alta</option>
+        <option value="Media">Media</option>
+        <option value="Baja">Baja</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <%= f.label :taskfull%>
+    <%= f.text_field :taskfull, class: "form-control" %>
+  </div>
+  <%= f.submit "#{form_name} homework", class: "btn btn-primary" %>
+  <a href="<%= homeworks_path %>" class="btn btn-default"> View all </a>
+<% end %>
