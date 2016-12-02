@@ -1,8 +1,10 @@
 <div class="container">
   <h1 class="text-center"> Notebook </h1>
-  <section class="row text-center cities-controls" id="notebook-actions">
-      <a href="<%= new_notebook_path %>" class="btn btn-default" data-remote="true"> New Notebook </a>
-  </section>
+  <% if current_user %>
+    <section class="row text-center cities-controls" id="notebook-actions">
+        <a href="<%= new_notebook_path %>" class="btn btn-default" data-remote="true"> New Notebook </a>
+    </section>
+  <% end %>
   <% @notebooks.each do |f| %>
     <article class="row city">
       <ul>
