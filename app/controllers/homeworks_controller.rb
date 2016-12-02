@@ -1,6 +1,9 @@
 class HomeworksController < ApplicationController
   def new
     @homework = Homework.new
+    @homework.tasknotebooks.build
+    binding.pry
+    @notebooks = Notebook.where(user_id: current_user.id)
   end
 
   def show
@@ -23,6 +26,7 @@ class HomeworksController < ApplicationController
 
   def edit
     find_homework
+    @notebooks = Notebook.all
     if @homework.nil?
       flash[:error] = "We can not edit your homework."
       redirect_to root_path
@@ -43,9 +47,15 @@ class HomeworksController < ApplicationController
   def create
     @homework = Homework.new(homework_params)
     if @homework.save
-      redirect_to homeworks_path
+      @homework.tasknotebooks.build(notebook_id: params[:homework][:notebook_id])
+      if @homework.save
+        flash[:success] = "The new homework it was created with success."
+        redirect_to homeworks_path
+      end
     else
-      flash[:success] = "The new homework it was created with success."
+      @notebooks = Notebook.where(user_id: current_user.id)
+      @homework.tasknotebooks.nil? ? @homework.tasknotebooks.build : nil
+      flash[:error] = "Error...."
       render 'new'
     end
   end
