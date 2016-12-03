@@ -82,7 +82,7 @@ class NotebooksController < ApplicationController
     if !current_user
       @notebooks = Notebook.all
     else
-      @notebooks = (Notebook.where(user_id: current_user.id) | Notebook.where.not(user_id: current_user.id))
+      @notebooks = (Notebook.where(user_id: current_user.id)) #| Notebook.where.not(user_id: current_user.id))
     end
   end
 

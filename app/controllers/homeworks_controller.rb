@@ -2,7 +2,7 @@ class HomeworksController < ApplicationController
   def new
     @homework = Homework.new
     @homework.tasknotebooks.build
-    binding.pry
+    @homework.taskusers.build
     @notebooks = Notebook.where(user_id: current_user.id)
   end
 
@@ -49,12 +49,22 @@ class HomeworksController < ApplicationController
     if @homework.save
       @homework.tasknotebooks.build(notebook_id: params[:homework][:notebook_id])
       if @homework.save
-        flash[:success] = "The new homework it was created with success."
-        redirect_to homeworks_path
+        @homework.taskusers.build(user_id: current_user.id)
+        #binding.pry
+        if @homework.save
+          flash[:success] = "The new homework it was created with success."
+          redirect_to homeworks_path
+        else
+          @notebooks = Notebook.where(user_id: current_user.id)
+          flash[:error] = "Error...."
+          render 'new'
+        end
+
       end
     else
       @notebooks = Notebook.where(user_id: current_user.id)
       @homework.tasknotebooks.nil? ? @homework.tasknotebooks.build : nil
+      @homework.taskusers.nil? ? @homework.taskusers.build : nil
       flash[:error] = "Error...."
       render 'new'
     end
