@@ -1,9 +1,13 @@
 <div class="container">
   <article class="">
-    <ul>
-      <li class="col-md-2">Code: <%= @notebook.name %></li>
+    <ul class="table-results">
+      <div class="result-row">
+        <li class="results-cell result-aling result-title"><%= @notebook.name %></li>
+      </div>
       <% if current_user %>
-        <li class="col-md-2"><a href="<%= notebook_path(@notebook.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+      <div class="result-row text-center">
+        <li class="results-cell"><a href="<%= notebook_path(@notebook.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+      </div>
       <% end %>
     </ul>
   </article>

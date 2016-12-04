@@ -1,14 +1,26 @@
 <div class="container">
-  <article class="row homework">
-    <ul>
-      <li class="col-md-2"><strong><%= @homework.name %></strong></li>
-      <li class="col-md-2"><%= @homework.description %></li>
-      <li class="col-md-2"><%= @homework.date_create %></li>
-      <li class="col-md-2"><%= @homework.date_full %></li>
-      <li class="col-md-2"><%= @homework.priority %></li>
-      <li class="col-md-2"><%= @homework.taskfull %></li>
-      <li class="col-md-4"><a href="<%= homework_path(@homework.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
-      <li class="col-md-4"><a href="<%= edit_homework_path(@homework.id) %>" class="btn btn-primary"> Edit </a></li>
+  <article class="">
+    <ul class="table-results">
+      <div class="result-row">
+        <li class="results-cell results-aling result-title"><strong><%= @homework.name %></strong></li>
+      </div>
+      <div class="result-row">
+        <li class="results-cell results-aling">Description: <%= @homework.description %></li>
+      </div>
+      <div class="result-row">
+        <li class="results-cell results-aling">Create: <%= @homework.date_create %></li>
+        <li class="results-cell results-aling">Finish: <%= @homework.date_full %></li>
+      </div>
+      <div class="result-row">
+        <li class="results-cell results-aling">Priority: <%= @homework.priority %></li>
+        <li class="results-cell results-aling">Taskfull: <%= @homework.taskfull %></li>
+      </div>
+      <% if current_user %>
+      <div class="result-row">
+        <li class="results-cell"><a href="<%= homework_path(@homework.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+        <li class="results-cell"><a href="<%= edit_homework_path(@homework.id) %>" class="btn btn-primary"> Edit </a></li>
+      </div>
+      <% end %>
     </ul>
   </article>
 </div>

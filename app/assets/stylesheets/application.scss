@@ -16,3 +16,131 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+h1, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+.container-head {
+  display: block;
+  position: relative;
+
+  background-color: #394FB7;
+}
+
+.menu-nav {
+  position: absolute;
+  bottom: -34px;
+  width: 100%;
+  padding: 0 25px 0 10px;
+  color: #fff;
+  background-color: #2C3DA1;
+}
+
+.logo-link {
+  color: #fff;
+  &:hover {
+    background-color: #fff;
+    color: #23527c;
+  }
+}
+
+.menu-option {
+  color: #fff;
+}
+
+.headline {
+  padding: 5%;
+  font-family: Georgia, Cambria, Times, "Times New Roman";
+  font-size: 5vw;
+  color: #fff;
+  text-align: center;
+}
+
+.container-main {
+  margin-top: 34px;
+  padding: 20px;
+}
+.alert {
+  display: block;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 17px;
+  border-radius: 10px;
+  &:before {
+    font-size: 20px;
+  }
+}
+
+.success {
+  background-color: #E9FFD9;
+  border-color: #59834C;
+  color: #59834C;
+  &:before {
+    color: #59834C;
+  }
+}
+
+.error {
+  background-color: #FFECEC;
+  border-color: #AB544F;
+  color: #AB544F;
+  &:before {
+    color: #AB544F;
+  }
+}
+
+.notice {
+  background-color: #DCEDF6;
+  border-color: #5088AB;
+  color: #5088AB;
+  &:before {
+    color: #5088AB;
+  }
+}
+
+.page-title {
+    text-transform: uppercase;
+    padding: 10px 0 20px;
+}
+
+.btn-general {
+  background-color: #85CCDE;
+  border-color: #3BACD5;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.table-results {
+  margin: 15px auto;
+  width: 700px;
+  border: 1px solid #224373;
+}
+
+.results-cell{
+  display: table-cell;
+  padding: 10px;
+
+}
+
+.results-aling {
+  display: block;
+}
+
+.result-row {
+  display: table;
+  width: 100%;
+}
+
+.result-title {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  background-color: #224373;
+  color: #fff;
+  font-size: 1.5vw;
+}

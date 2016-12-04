@@ -71,7 +71,12 @@ class HomeworksController < ApplicationController
   end
 
   def index
-    @homeworks = Homework.all
+    if !current_user
+      @homeworks = Homework.all
+    else
+      #@homeworks = (Homework.where(user_id: current_user.id))
+      @homeworks = (Homework.all.where(id: TaskUser.select(:homework_id).where(user_id: current_user.id)))
+    end
   end
 
   private

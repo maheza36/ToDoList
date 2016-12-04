@@ -10,28 +10,33 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <a class="navbar-brand" href="<%= root_path %>">ToDoList </a>
-        <ul class="nav navbar-nav navbar-right">
-            <% if !current_user %>
-              <li><a href="<%= new_user_session_path %>">Log in</a></li>
-              <li><a href="<%= new_user_registration_path %>">Sign up</a></li>
-            <% else %>
-              <li><a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a></li>
-              <li><a href="<%= new_homework_path %>">New homewrok</a></li>
-              <li><a href="<%= new_notebook_path %>">New notebook</a></li>
-            <% end %>
-        </ul>
-       </div>
-    </nav>
+    <header class="container-head">
+      <h1 class="headline">TO DO LIST</h1>
+      <nav class="menu-nav">
+          <a class="navbar-brand logo-link" href="<%= root_path %>">ToDoList </a>
+          <ul class="nav navbar-nav navbar-right">
+              <% if !current_user %>
+                <li><a href="<%= new_user_session_path %>" class="menu-option">Log in</a></li>
+                <li><a href="<%= new_user_registration_path %>" class="menu-option">Sign up</a></li>
+              <% else %>
+                <li ><a href="<%= destroy_user_session_path %>" class="menu-option" data-method="delete">Log out</a></li>
+                <li><a href="<%= new_homework_path %>" class="menu-option">New homewrok</a></li>
+                <li><a href="<%= new_notebook_path %>" class="menu-option" >New notebook</a></li>
+              <% end %>
+          </ul>
+         </div>
+      </nav>
+  </header>
 
-        <% if flash[:success] or flash[:error] or flash[:notice]%>
-          <span class="flash-message <%= flash[:success] ? 'success' : flash[:error] ? 'error' : flash[:notice] ? 'notice' : '' %>">
-            <%= flash[:success] ? flash[:success] : flash[:error] ? flash[:error] : flash[:notice] ? flash[:notice] : '' %>
-          </span>
-        <% end %>
+    <div class="container-main">
+      <% if flash[:success] or flash[:error] or flash[:notice]%>
+      <span class="flash-message <%= flash[:success] ? 'success alert glyphicon glyphicon-ok-circle' : flash[:error] ? 'error alert glyphicon glyphicon-remove-circle' : flash[:notice] ? 'notice alert glyphicon glyphicon-info-sign' : '' %>">
+        <%= flash[:success] ? flash[:success] : flash[:error] ? flash[:error] : flash[:notice] ? flash[:notice] : '' %>
+      </span>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+
+    </div>
   </body>
 </html>

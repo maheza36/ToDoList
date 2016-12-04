@@ -6,22 +6,29 @@
     </section>
   <% end %>
   <% @notebooks.each do |f| %>
-    <article class="row city">
-      <ul>
-        <li class="col-md-2">Name: <%= f.name %></li>
-        <% if current_user %>
-        <li class="col-md-1"><a href="<%= notebook_path(f.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
-        <li class="col-md-1"><a href="<%= edit_notebook_path(f.id) %>" class="btn btn-primary" data-remote="true"> Edit </a></li>
-        <% end %>
-        <li class="col-md-3">
-          <ul>
-            <% f.tasknotebooks.each  do |t| %>
-              <%if t.homework%>
-              <li> <%= t.homework.name %> </li>
-              <%end%>
-            <% end if f.tasknotebooks.any? %>
-          </ul>
-        <li class="col-md-1"><a href="<%= notebook_path(f.id) %>" class="btn btn-info" > Show </a></li>
+    <article class="">
+      <ul class="table-results">
+        <div class="results-row">
+          <li class="results-cell results-aling result-title"><%= f.name %></li>
+        </div>
+
+        <div class="result-row">
+          <% f.tasknotebooks.each  do |t| %>
+            <%if t.homework%>
+            <div class="result-row">
+              <li class="results-cell"> <%= t.homework.name %> </li>
+            </div>
+            <%end%>
+          <% end if f.tasknotebooks.any? %>
+        </div>
+
+        <div class="result-row text-center">
+          <% if current_user %>
+            <li class="results-cell"><a href="<%= notebook_path(f.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+            <li class="results-cell"><a href="<%= edit_notebook_path(f.id) %>" class="btn btn-primary" data-remote="true"> Edit </a></li>
+          <% end %>
+            <li class="results-cell"><a href="<%= notebook_path(f.id) %>" class="btn btn-info" > Show </a></li>
+        </div>
 
       </ul>
     </article>
