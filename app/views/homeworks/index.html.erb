@@ -3,43 +3,123 @@
   <h1 class="text-center page-title"> Homeworks </h1>
   <% if current_user %>
     <section class="text-center">
-        <a href="<%= new_homework_path %>" class="btn btn-default btn-general"> New Homework </a>
+        <a href="<%= new_homework_path %>" class="btn btn-default"> New Homework </a>
     </section>
 <% end %>
-  <% @homeworks.each do |h| %>
-    <article class="  ">
-      <ul class="table-results">
-        <div class="results-row">
-            <li class="results-cell results-aling result-title"><strong><%= h.name %></strong></li>
-        </div>
-        <div class="results-row">
-          <li class="results-cell results-aling"> Description: <%= h.description %></li>
-        </div>
-        <div class="result-row">
-          <li class="results-cell">Create: <%= h.date_create %></li>
-          <li class="results-cell">Finish: <%= h.date_full %></li>
-        </div>
-          <div class="result-row">
-          <li class="results-cell">Priority: <%= h.priority %></li>
-          <li class="results-cell">Taskfull: <%= h.taskfull %></li>
-        </div>
-        <div class="result-row">
-          <li class="results-cell">
-            <%= form_tag share_homework_path(h.id) do %>
-            <%= label_tag :user_emails%>
-            <%= text_field_tag :user_emails%>
-            <button type="submit" name="button"> Share </button>
-            <% end %>
-          </li>
-        </div>
-        <div class="result-row text-center">
-          <% if current_user %>
-            <li class="results-cell"><a href="<%= homework_path(h.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
-            <li class="results-cell"><a href="<%= edit_homework_path(h.id) %>" class="btn btn-primary"> Edit </a></li>
-          <% end %>
-            <li class="results-cell"><a href="<%= homework_path(h.id) %>" class="btn btn-info"> Show </a></li>
-        </div>
-      </ul>
-    </article>
-  <% end if @homeworks.any? %>
+    <% if current_user %>
+      <h2>Incompletas</h2>
+
+      <% @homeworksI.each do |h| %>
+        <article class="  ">
+          <ul class="table-results">
+            <div class="results-row">
+                <li class="results-cell results-aling result-title"><strong><%= h.name %></strong></li>
+            </div>
+            <div class="results-row">
+              <li class="results-cell results-aling"> Description: <%= h.description %></li>
+            </div>
+            <div class="result-row">
+              <li class="results-cell">Create: <%= h.date_create %></li>
+              <li class="results-cell">Finish: <%= h.date_full %></li>
+            </div>
+              <div class="result-row">
+              <li class="results-cell">Priority: <%= h.priority %></li>
+              <li class="results-cell">Taskfull: <%= h.taskfull %></li>
+            </div>
+            <div class="result-row">
+              <li class="results-cell">
+                <%= form_tag share_homework_path(h.id) do %>
+                <%= label_tag :user_emails%>
+                <%= text_field_tag :user_emails%>
+                <button type="submit" name="button"> Share </button>
+                <% end %>
+              </li>
+            </div>
+            <div class="result-row text-center">
+              <% if current_user %>
+                <li class="results-cell"><a href="<%= homework_path(h.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+                <li class="results-cell"><a href="<%= edit_homework_path(h.id) %>" class="btn btn-primary"> Edit </a></li>
+              <% end %>
+                <li class="results-cell"><a href="<%= homework_path(h.id) %>" class="btn btn-info"> Show </a></li>
+            </div>
+          </ul>
+        </article>
+      <% end if @homeworksI.any? %>
+
+      <h2>Completas</h2>
+
+      <% @homeworksC.each do |h| %>
+        <article class="  ">
+          <ul class="table-results">
+            <div class="results-row">
+                <li class="results-cell results-aling result-title"><strong><%= h.name %></strong></li>
+            </div>
+            <div class="results-row">
+              <li class="results-cell results-aling"> Description: <%= h.description %></li>
+            </div>
+            <div class="result-row">
+              <li class="results-cell">Create: <%= h.date_create %></li>
+              <li class="results-cell">Finish: <%= h.date_full %></li>
+            </div>
+              <div class="result-row">
+              <li class="results-cell">Priority: <%= h.priority %></li>
+              <li class="results-cell">Taskfull: <%= h.taskfull %></li>
+            </div>
+            <div class="result-row">
+              <li class="results-cell">
+                <%= form_tag share_homework_path(h.id) do %>
+                <%= label_tag :user_emails%>
+                <%= text_field_tag :user_emails%>
+                <button type="submit" name="button"> Share </button>
+                <% end %>
+              </li>
+            </div>
+            <div class="result-row text-center">
+              <% if current_user %>
+                <li class="results-cell"><a href="<%= homework_path(h.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+              <% end %>
+
+            </div>
+          </ul>
+        </article>
+      <% end if @homeworksC.any? %>
+
+    <% else %>
+      <% @homeworks.each do |h| %>
+        <article class="  ">
+          <ul class="table-results">
+            <div class="results-row">
+                <li class="results-cell results-aling result-title"><strong><%= h.name %></strong></li>
+            </div>
+            <div class="results-row">
+              <li class="results-cell results-aling"> Description: <%= h.description %></li>
+            </div>
+            <div class="result-row">
+              <li class="results-cell">Create: <%= h.date_create %></li>
+              <li class="results-cell">Finish: <%= h.date_full %></li>
+            </div>
+              <div class="result-row">
+              <li class="results-cell">Priority: <%= h.priority %></li>
+              <li class="results-cell">Taskfull: <%= h.taskfull %></li>
+            </div>
+            <div class="result-row">
+              <li class="results-cell">
+                <%= form_tag share_homework_path(h.id) do %>
+                <%= label_tag :user_emails%>
+                <%= text_field_tag :user_emails%>
+                <button type="submit" name="button"> Share </button>
+                <% end %>
+              </li>
+            </div>
+            <div class="result-row text-center">
+              <% if current_user %>
+                <li class="results-cell"><a href="<%= homework_path(h.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+                <li class="results-cell"><a href="<%= edit_homework_path(h.id) %>" class="btn btn-primary"> Edit </a></li>
+              <% end %>
+                <li class="results-cell"><a href="<%= homework_path(h.id) %>" class="btn btn-info"> Show </a></li>
+            </div>
+          </ul>
+        </article>
+      <% end if @homeworks.any? %>
+    <% end %>
 </div>

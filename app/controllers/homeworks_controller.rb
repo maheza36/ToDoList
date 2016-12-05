@@ -75,7 +75,8 @@ class HomeworksController < ApplicationController
       @homeworks = Homework.all
     else
       #@homeworks = (Homework.where(user_id: current_user.id))
-      @homeworks = (Homework.all.where(id: TaskUser.select(:homework_id).where(user_id: current_user.id)))
+      @homeworksC = (Homework.all.where(taskfull: 1, id: TaskUser.select(:homework_id).where(user_id: current_user.id)))
+      @homeworksI = (Homework.all.where(taskfull: 0, id: TaskUser.select(:homework_id).where(user_id: current_user.id)))
     end
   end
 
