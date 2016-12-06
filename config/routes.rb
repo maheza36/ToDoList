@@ -19,4 +19,7 @@ resources :homeworks do
 end
 resources :notebooks
 resources :task_users
+
+default_url_options :host => "http://localhost:3000/"
+
 end

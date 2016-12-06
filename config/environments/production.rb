@@ -84,6 +84,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
   # config/environments/production.rb
     config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
     if ENV["RAILS_LOG_TO_STDOUT"].present?
@@ -91,5 +92,17 @@ Rails.application.configure do
       logger.formatter = config.log_formatter
       config.logger = ActiveSupport::TaggedLogging.new(logger)
     end
+
+  config.action_mailer.default_url_options = { :host => 'http:localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: ENV["GMAIL_DOMAIN"],
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV["pperez04072013@gmail.com"],
+      password: ENV["abc1234567890$"]
+  }
 
 end
