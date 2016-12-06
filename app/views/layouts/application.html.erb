@@ -14,10 +14,15 @@
       <h1 class="headline">TO DO LIST</h1>
       <nav class="menu-nav">
           <a class="navbar-brand logo-link" href="<%= root_path %>">ToDoList </a>
+          <% if current_user %>
+            <span class="navbar-brand logo-link"> User: <%= current_user.email %> </span>
+          <% end %>
           <ul class="nav navbar-nav navbar-right">
               <% if !current_user %>
                 <li><a href="<%= new_user_session_path %>" class="menu-option">Log in</a></li>
                 <li><a href="<%= new_user_registration_path %>" class="menu-option">Sign up</a></li>
+                <li><a href="<%= homeworks_path %>" class="menu-option">Homeworks</a></li>
+                <li><a href="<%= notebooks_path %>" class="menu-option" >Notebook</a></li>
               <% else %>
                 <li ><a href="<%= destroy_user_session_path %>" class="menu-option" data-method="delete">Log out</a></li>
                 <li><a href="<%= new_homework_path %>" class="menu-option">New homewrok</a></li>

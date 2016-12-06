@@ -6,4 +6,7 @@ class Homework < ApplicationRecord
 
   accepts_nested_attributes_for :tasknotebooks
   accepts_nested_attributes_for :taskusers
+
+  validates :name, :description, :priority, :taskfull, presence: true
+
 end

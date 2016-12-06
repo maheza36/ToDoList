@@ -102,15 +102,17 @@
               <li class="results-cell">Priority: <%= h.priority %></li>
               <li class="results-cell">Taskfull: <%= h.taskfull %></li>
             </div>
-            <div class="result-row">
-              <li class="results-cell">
-                <%= form_tag share_homework_path(h.id) do %>
-                <%= label_tag :user_emails%>
-                <%= text_field_tag :user_emails%>
-                <button type="submit" name="button"> Share </button>
-                <% end %>
-              </li>
-            </div>
+            <% if current_user %>
+              <div class="result-row">
+                <li class="results-cell">
+                  <%= form_tag share_homework_path(h.id) do %>
+                  <%= label_tag :user_emails%>
+                  <%= text_field_tag :user_emails%>
+                  <button type="submit" name="button"> Share </button>
+                  <% end %>
+                </li>
+              </div>
+            <% end %>
             <div class="result-row text-center">
               <% if current_user %>
                 <li class="results-cell"><a href="<%= homework_path(h.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
